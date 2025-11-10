@@ -3,6 +3,9 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Models\Articles\Article;
+use Dom\Comment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -21,8 +24,16 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        "role"
     ];
-
+     public function articles()
+    {
+        return $this->hasMany(Article::class);
+    }
+public function comments()
+{
+    return $this->hasMany(Comment::class);
+}
     /**
      * The attributes that should be hidden for serialization.
      *
