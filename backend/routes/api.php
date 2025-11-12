@@ -1,5 +1,7 @@
 <?php
 
+
+use App\Http\Controllers\Profile\ProfileController;
 use App\Http\Controllers\Articles\ArticleController;
 use App\Http\Controllers\Comments\CommentController;
 use Illuminate\Http\Request;
@@ -25,3 +27,6 @@ Route::apiResource('articles', ArticleController::class);
 Route::get('/articles/{article}/comments', [CommentController::class, 'index']);
 Route::post('/articles/{article}/comments', [CommentController::class, 'store']);
 Route::delete('/comments/{id}', [CommentController::class, 'destroy']);
+
+ Route::get('/profile', [ProfileController::class, 'show']);
+    Route::put('/profile', [ProfileController::class, 'update']);
